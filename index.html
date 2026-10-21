@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Gestor de gastos personales. Tus datos quedan solo en tu navegador.">
+<title>Mis gastos</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <h1>Mis gastos</h1>
+  <label class="mes">Mes <input type="month" id="mes" required></label>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <button type="button" data-tab="resumen" aria-current="page">Resumen</button>
+  <button type="button" data-tab="gastos">Gastos</button>
+  <button type="button" data-tab="ingresos">Ingresos</button>
+  <button type="button" data-tab="consultas">Consultas</button>
+  <button type="button" data-tab="admin">Administrar</button>
+</nav>
+
+<main>
+  <section data-view="resumen">
+    <div class="saldo" id="saldo"></div>
+    <h2>Gastos por categoría</h2>
+    <ul class="barras" id="cats"></ul>
+  </section>
+
+  <section data-view="gastos" hidden>
+    <h2>Nuevo gasto</h2>
+    <form id="f-gasto" class="form">
+      <label>Descripción <input name="descripcion" required maxlength="80"></label>
+      <label>Monto <input name="monto" type="number" min="0.01" step="0.01" inputmode="decimal" required></label>
+      <label>Fecha <input name="fecha" type="date" required></label>
+      <label>Tipo
+        <select name="tipo" id="tipo">
+          <option value="fijo">Fijo</option>
+          <option value="ocasional">Ocasional</option>
+          <option value="temporal">Temporal (cuotas)</option>
+          <option value="anual">Anual</option>
+        </select>
+      </label>
+      <div class="cuotas" id="cuotas" hidden>
+        <label>Cuotas totales <input name="cuotasTotal" type="number" min="1" step="1" value="1"></label>
+        <label>Cuotas pagadas <input name="cuotasPagadas" type="number" min="0" step="1" value="0"></label>
+      </div>
+      <label>Categoría <select name="categoriaId" id="s-cat" required></select></label>
+      <label>Persona <select name="personaId" id="s-per-g"></select></label>
+      <button class="primario">Guardar gasto</button>
+    </form>
+    <h2>Registrar pago</h2>
+    <form id="f-pago" class="form">
+      <label>Gasto <select name="gastoId" id="s-gasto" required></select></label>
+      <label>Monto pagado <input name="monto" type="number" min="0.01" step="0.01" inputmode="decimal" required></label>
+      <label>Fecha <input name="fecha" type="date" required></label>
+      <label>Medio de pago <select name="medio" id="s-medio"></select></label>
+      <button class="primario">Registrar pago</button>
+    </form>
+    <h2>Gastos del mes</h2>
+    <ul class="lista" id="l-gastos"></ul>
+  </section>
+
+  <section data-view="ingresos" hidden>
+    <h2>Nuevo ingreso</h2>
+    <form id="f-ingreso" class="form">
+      <label>Concepto <input name="concepto" required maxlength="80"></label>
+      <label>Monto <input name="monto" type="number" min="0.01" step="0.01" inputmode="decimal" required></label>
+      <label>Fecha <input name="fecha" type="date" required></label>
+      <label>Persona <select name="personaId" id="s-per-i" required></select></label>
+      <button class="primario">Guardar ingreso</button>
+    </form>
+    <h2>Ingresos del mes</h2>
+    <ul class="lista" id="l-ingresos"></ul>
+  </section>
+
+  <section data-view="admin" hidden>
+    <h2>Personas</h2>
+    <form id="f-persona" class="form en-linea">
+      <input name="nombre" placeholder="Nombre" required maxlength="40" aria-label="Nombre de la persona">
+      <button class="primario">Agregar</button>
+    </form>
+    <ul class="lista" id="l-personas"></ul>
+
+    <h2>Categorías</h2>
+    <form id="f-categoria" class="form en-linea">
+      <input name="nombre" placeholder="Nueva categoría" required maxlength="40" aria-label="Nombre de la categoría">
+      <button class="primario">Agregar</button>
+    </form>
+    <ul class="lista" id="l-categorias"></ul>
+
+    <h2>Tus datos</h2>
+    <p class="nota">Todo se guarda solo en este navegador. Si borrás los datos del sitio o cambiás de dispositivo, se pierden: descargá una copia de vez en cuando.</p>
+    <div class="acciones">
+      <button type="button" id="b-export">Descargar copia</button>
+      <label class="boton">Restaurar copia <input type="file" id="b-import" accept="application/json" hidden></label>
+      <button type="button" id="b-reset" class="peligro">Borrar todo</button>
+    </div>
+
+  </section>
+  <section data-view="consultas" hidden>
+    <h2>Consultas</h2>
+    <div class="form">
+      <label>Consulta <select id="q-tipo"></select></label>
+      <label id="q-param-l" hidden><span id="q-param-t"></span> <select id="q-param"></select></label>
+    </div>
+    <p class="nota" id="q-nota"></p>
+    <div id="q-out"></div>
+    <h2>Reporte mensual</h2>
+    <p class="nota">Descarga un archivo de texto con todos los movimientos del mes elegido arriba.</p>
+    <button type="button" id="b-reporte" class="primario">Descargar reporte</button>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
