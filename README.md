@@ -12,7 +12,7 @@ El proyecto permite la gestión integral de finanzas personales o familiares (co
 
 Puedes utilizar la aplicación directamente desde tu navegador ingresando al siguiente enlace desplegado en **Vercel**:
 
-👉 **[Ejecutar Mis Gastos en la Web (Vercel)](https://LINK_DE_VERCEL_AQUI.vercel.app)** *(Reemplazar con tu link final)*
+👉 **[Ejecutar Mis Gastos en la Web (Vercel)](https://gastos-personales-mmp.vercel.app/)**
 
 > 🔒 **Nota de Privacidad:** Todo lo que registres en este enlace se guarda **exclusivamente en el navegador de tu propio dispositivo** (`localStorage`). No existe base de datos en servidores externos, por lo que nadie (ni siquiera la administradora de la página) tiene acceso a tus registros financieros.
 
@@ -91,7 +91,7 @@ La aplicación se organiza en torno a una barra de navegación principal adaptat
 Tienes dos formas de utilizar este sistema: directamente desde internet o descargando el código en tu computadora.
 
 ### Opción 1: Usar la versión Online (Recomendado)
-1. Ingresa desde tu celular, tablet o PC a **[https://LINK_DE_VERCEL_AQUI.vercel.app](https://LINK_DE_VERCEL_AQUI.vercel.app)**.
+1. Ingresa desde tu celular, tablet o PC a **[https://gastos-personales-mmp.vercel.app/](https://gastos-personales-mmp.vercel.app/)**.
 2. ¡Listo! Ya puedes empezar a cargar personas, categorías, ingresos y gastos.
 3. *Consejo:* Usa el botón **"Descargar copia"** en la pestaña *Administrar* de vez en cuando para guardar un respaldo de tus datos o pasarlos de tu PC a tu celular.
 
@@ -102,7 +102,7 @@ Si deseas revisar el código fuente, modificarlo o usarlo sin conexión a intern
    * Haz clic en el botón verde **`<> Code`** arriba a la derecha en este repositorio de GitHub y selecciona **"Download ZIP"**, luego descomprime la carpeta en tu computadora.
    * *(Opcional con Git)* Clona el repositorio ejecutando en tu terminal:
      ```bash
-     git clone [https://github.com/TU_USUARIO/TU_REPOSITORIO.git](https://github.com/TU_USUARIO/TU_REPOSITORIO.git)
+   git clone https://github.com/PriMartM/Sistema-de-Gesti-n-de-Gastos-Personales-version-web.git
      ```
 2. **Estructura de archivos que encontrarás:**
    ```text
